@@ -66,10 +66,13 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 	@Override
 	public Course updateCourse(int courseId, String courseName) {
 		// TODO Auto-generated method stub
+		if(Objects.isNull(courseId) || Objects.isNull(courseName)) {
+			throw new CourseException("1001", "Null", "Null Values", "False");
+		}
 		List<Course> course = courseDetailDAO.getCourseById(courseId);
 		course.get(0).setCourseName(courseName);
 		courseDetailDAO.save(course.get(0));
-		return null;
+		return course.get(0);
 	}
 
 	@Override
