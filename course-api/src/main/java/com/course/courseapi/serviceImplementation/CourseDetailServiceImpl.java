@@ -56,16 +56,13 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 	public List<Course> getCourseById(int id) {
 		if(Objects.isNull((id))){
 			throw new CourseException("1001", "Null", "Id is null", "False");
-			
 		}
-		// TODO Auto-generated method stub
 		List<Course> courselist = courseDetailDAO.getCourseById(id);
 		return courselist;
 	}
 
 	@Override
 	public Course updateCourse(int courseId, String courseName) {
-		// TODO Auto-generated method stub
 		if(Objects.isNull(courseId) || Objects.isNull(courseName)) {
 			throw new CourseException("1001", "Null", "Null Values", "False");
 		}
@@ -77,7 +74,9 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 
 	@Override
 	public Course addSubjectToCourseById(int id, Subject subject) {
-		// TODO Auto-generated method stub
+		if(Objects.isNull(id) || Objects.isNull(subject)) {
+			throw new CourseException("1001", "Null", "Null Values", "False");
+		}
 		List<Course> courses = courseDetailDAO.getCourseById(id);
 		if (Objects.nonNull(courses.get(0).getSubject())) {
 
@@ -97,6 +96,9 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 
 	@Override
 	public List<Course> getCourseByName(String name) {
+		if(Objects.isNull(name)) {
+			throw new CourseException("1001", "Null", "Null Values", "False");
+		}
 		List<Course> coursenamelist = courseDetailDAO.getCourseName(name);
 		return coursenamelist;
 	}
