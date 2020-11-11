@@ -2,6 +2,10 @@ package com.course.courseapi.core;
 
 import java.io.Serializable;
 
+/**
+ * Core JsonResponse Class.
+ * All the controller returns JsonResponse.
+ */
 public class JsonResponse implements Serializable{
 
 

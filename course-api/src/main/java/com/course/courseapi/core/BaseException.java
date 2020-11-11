@@ -1,10 +1,12 @@
 package com.course.courseapi.core;
 
+
+/**
+ * Core BaseException Class
+ */
 public class BaseException extends RuntimeException{
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 31L;
 	
 	

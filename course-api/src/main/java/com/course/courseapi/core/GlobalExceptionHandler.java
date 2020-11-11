@@ -1,13 +1,17 @@
 package com.course.courseapi.core;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+/**
+ * Core Exception handler Class
+ */
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
+@RestControllerAdvice // If any exception occurs, the pointer will come to this class as this is annotated with @RestControllerAdvice
 public class GlobalExceptionHandler {
 	
 	
-	@ExceptionHandler({BaseException.class})
+	@ExceptionHandler({BaseException.class})//Request comes as per the Exception class
 	public JsonResponse handleApiRequestrException(BaseException e) {
 		System.out.println("---------------------->0");
 		JsonResponse response = new JsonResponse();
