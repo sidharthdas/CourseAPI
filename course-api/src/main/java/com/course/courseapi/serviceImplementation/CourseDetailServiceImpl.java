@@ -54,6 +54,10 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 
 	@Override
 	public List<Course> getCourseById(int id) {
+		if(Objects.isNull((id))){
+			throw new CourseException("1001", "Null", "Id is null", "False");
+			
+		}
 		// TODO Auto-generated method stub
 		List<Course> courselist = courseDetailDAO.getCourseById(id);
 		return courselist;
