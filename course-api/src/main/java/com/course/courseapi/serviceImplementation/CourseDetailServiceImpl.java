@@ -102,7 +102,9 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 		List<Course> coursenamelist = courseDetailDAO.getCourseName(name);
 		return coursenamelist;
 	}
-
+	
+	
+	// Exception testing
 	@Override
 	public int test() {
 		try {

@@ -14,6 +14,7 @@ import com.course.courseapi.dao.SubjectDetailDAO;
 import com.course.courseapi.entity.Course;
 import com.course.courseapi.entity.Subject;
 import com.course.courseapi.entity.Topics;
+import com.course.courseapi.exception.CourseException;
 import com.course.courseapi.service.SubjectDetailService;
 
 
@@ -39,6 +40,9 @@ public class SubjectDetailServiceImplementation implements SubjectDetailService{
 	@Override
 	public void addSubject(Subject s) {
 		// TODO Auto-generated method stub
+		if(Objects.isNull(s)) {
+			throw new CourseException("1001", "Null", "Null Values", "False");
+		}
 		List<Subject> subjectNamelist = subjectDetailDAO.getSubjectByName(s.getSubjectName());
 		if(subjectNamelist.isEmpty())
 			subjectDetailDAO.save(s);
@@ -48,6 +52,9 @@ public class SubjectDetailServiceImplementation implements SubjectDetailService{
 	@Override
 	public List<Subject> getSubjectById(int id) {
 		// TODO Auto-generated method stub
+		if(Objects.isNull(id)) {
+			throw new CourseException("1001", "Null", "Null Values", "False");
+		}
 		List<Subject> subjectlist = subjectDetailDAO.getSubjectById(id);
 		return subjectlist;
 	}
@@ -55,6 +62,9 @@ public class SubjectDetailServiceImplementation implements SubjectDetailService{
 	@Override
 	public Subject addTopicToSubject(int subjectId, Topics topics) {
 		// TODO Auto-generated method stub
+		if(Objects.isNull(subjectId) || Objects.isNull(topics)) {
+			throw new CourseException("1001", "Null", "Null Values", "False");
+		}
 		List<Subject> sublist = subjectDetailDAO.getSubjectById(subjectId);
 		if(sublist.isEmpty()) {
 			System.out.println("No subject found");
@@ -77,7 +87,9 @@ public class SubjectDetailServiceImplementation implements SubjectDetailService{
 
 	@Override
 	public List<Subject> getSubjectByName(String name) {
-		// TODO Auto-generated method stub
+		if(Objects.isNull(name)) {
+			throw new CourseException("1001", "Null", "Null Values", "False");
+		}
 		List<Subject> subjectNamelist = subjectDetailDAO.getSubjectByName(name);
 		return subjectNamelist;
 	}
