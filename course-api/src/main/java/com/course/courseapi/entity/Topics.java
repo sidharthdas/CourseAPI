@@ -3,13 +3,20 @@ package com.course.courseapi.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Version;
+
+import org.hibernate.envers.Audited;
 
 @Entity
+@Audited()
 public class Topics {
 	private String topicName;
 	@Id @GeneratedValue
 	private int topicId;
 	private String topicDesc;
+	
+	@Version
+	private int version;
 	
 	public String getTopicName() {
 		return topicName;
