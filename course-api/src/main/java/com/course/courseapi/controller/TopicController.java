@@ -20,17 +20,17 @@ public class TopicController {
 	@PostMapping("/topics/addTopic")
 	public JsonResponse addTopic(@RequestBody Topics topic) {
 		topicDetailService.addTopic(topic);
-		return JsonResponse.setJsonResponse("", "", "", "", "True");
+		return JsonResponse.setJsonResponse("", "", "", "", true);
 	}
 
 	@GetMapping("/topics/get-topics-byId/{id}")
 	public JsonResponse getTopicById(@PathVariable("id") int id) {
-		return JsonResponse.setJsonResponse("", "", "", topicDetailService.getTopicById(id), "True");
+		return JsonResponse.setJsonResponse("", "", "", topicDetailService.getTopicById(id), true);
 	}
 
 	@GetMapping("/topic/get-topic-ByName/{name}")
 	public JsonResponse getTopicByName(@PathVariable("name") String name) {
-		return JsonResponse.setJsonResponse("", "", "", topicDetailService.getTopicByName(name), "True");
+		return JsonResponse.setJsonResponse("", "", "", topicDetailService.getTopicByName(name), true);
 	}
 
 }

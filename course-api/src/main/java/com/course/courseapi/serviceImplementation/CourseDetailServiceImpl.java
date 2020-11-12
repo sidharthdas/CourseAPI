@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import com.course.courseapi.core.ExceptionErrors;
 import com.course.courseapi.dao.CourseDetailDAO;
 import com.course.courseapi.entity.Course;
 import com.course.courseapi.entity.Subject;
@@ -39,23 +40,26 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 	public Course addCourse(Course c) {
 		// TODO Auto-generated method stub
 		if (Objects.isNull(c.getCourseName())) {
-			throw new NullObjectException("1002", "Object is null", "Object coming from frontend is null", "False");
+			throw new NullObjectException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Course> cousreNamelist = courseDetailDAO.getCourseName(c.getCourseName());
 		if (cousreNamelist.isEmpty()) {
 			courseDetailDAO.save(c);
-			
+
 			return c;
+		}else {
+			throw new NullObjectException(ExceptionErrors.OBJECTALREADYPRESENTCODE, ExceptionErrors.OBJECTALREADYPRESENTMESSAGE,
+					ExceptionErrors.OBJECTALREADYPRESENTDESC, false);
 		}
-		
-		return null;
 
 	}
 
 	@Override
 	public List<Course> getCourseById(int id) {
-		if(Objects.isNull((id))){
-			throw new CourseException("1001", "Null", "Id is null", "False");
+		if (Objects.isNull((id))) {
+			throw new NullObjectException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Course> courselist = courseDetailDAO.getCourseById(id);
 		return courselist;
@@ -63,8 +67,9 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 
 	@Override
 	public Course updateCourse(int courseId, String courseName) {
-		if(Objects.isNull(courseId) || Objects.isNull(courseName)) {
-			throw new CourseException("1001", "Null", "Null Values", "False");
+		if (Objects.isNull(courseId) || Objects.isNull(courseName)) {
+			throw new NullObjectException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Course> course = courseDetailDAO.getCourseById(courseId);
 		course.get(0).setCourseName(courseName);
@@ -74,8 +79,9 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 
 	@Override
 	public Course addSubjectToCourseById(int id, Subject subject) {
-		if(Objects.isNull(id) || Objects.isNull(subject)) {
-			throw new CourseException("1001", "Null", "Null Values", "False");
+		if (Objects.isNull(id) || Objects.isNull(subject)) {
+			throw new NullObjectException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Course> courses = courseDetailDAO.getCourseById(id);
 		if (Objects.nonNull(courses.get(0).getSubject())) {
@@ -96,21 +102,22 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 
 	@Override
 	public List<Course> getCourseByName(String name) {
-		if(Objects.isNull(name)) {
-			throw new CourseException("1001", "Null", "Null Values", "False");
+		if (Objects.isNull(name)) {
+			throw new NullObjectException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Course> coursenamelist = courseDetailDAO.getCourseName(name);
 		return coursenamelist;
 	}
-	
-	
+
 	// Exception testing
 	@Override
 	public int test() {
 		try {
 			int i = 10 / 0;
 		} catch (Exception e) {
-			throw new CourseException("1001", "Number Devided By Zero ", "Test", "False");
+			throw new NullObjectException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		// throw new CourseException("1001", "test", "test", "Ok");
 		return 0;

@@ -13,7 +13,7 @@ public class BaseException extends RuntimeException{
 	protected String errorCode;
 	protected String errorMessage;
 	protected String errorDesc;
-	protected String successStatus;
+	protected boolean successStatus;
 	
 	public BaseException(String errorCode, String errorMessage,Throwable cause)
 	{
@@ -27,7 +27,7 @@ public class BaseException extends RuntimeException{
 	{
 		super(cause);
 	}	
-	public BaseException(String errorCode, String errorMessage, String errorDesc, String successStatus) {
+	public BaseException(String errorCode, String errorMessage, String errorDesc, boolean successStatus) {
 		this.errorCode = errorCode;
 		this.errorMessage = errorMessage;
 		this.errorDesc = errorDesc;
@@ -52,10 +52,10 @@ public class BaseException extends RuntimeException{
 	public void setErrorDesc(String errorDesc) {
 		this.errorDesc = errorDesc;
 	}
-	public String getSuccessStatus() {
+	public boolean getSuccessStatus() {
 		return successStatus;
 	}
-	public void setSuccessStatus(String successStatus) {
+	public void setSuccessStatus(boolean successStatus) {
 		this.successStatus = successStatus;
 	}
 	

@@ -22,40 +22,40 @@ public class CourseController {
 
 	@GetMapping("/test")
 	public JsonResponse test() {
-		return JsonResponse.setJsonResponse("", "", "", courseDetailService.test(), "ok");
+		return JsonResponse.setJsonResponse("", "", "", courseDetailService.test(), true);
 	}
 
 	@RequestMapping("/course")
 	public JsonResponse getAllCourse() {
-		return JsonResponse.setJsonResponse("", "", "", courseDetailService.getAllCources(), "OK");
+		return JsonResponse.setJsonResponse("", "", "", courseDetailService.getAllCources(), true);
 	}
 
 	@PostMapping("/course/addCourse")
 	public JsonResponse addCourse(@RequestBody Course course) {
 
-		return JsonResponse.setJsonResponse("", "", "", courseDetailService.addCourse(course), "True");
+		return JsonResponse.setJsonResponse("", "", "", courseDetailService.addCourse(course), true);
 	}
 
 	@GetMapping("/course/get-course-by-id/{id}")
 	public JsonResponse getCourseById(@PathVariable("id") int id) {
-		return JsonResponse.setJsonResponse("", "", "", courseDetailService.getCourseById(id), "True");
+		return JsonResponse.setJsonResponse("", "", "", courseDetailService.getCourseById(id), true);
 	}
 
 	@GetMapping("/course/get-cousre-by-name/{name}")
 	public JsonResponse getCouseByName(@PathVariable("name") String name) {
-		return JsonResponse.setJsonResponse("", "", "", courseDetailService.getCourseByName(name), "True");
+		return JsonResponse.setJsonResponse("", "", "", courseDetailService.getCourseByName(name), true);
 	}
 
 	@PutMapping("/course/update-courseName/{courseName}")
 	public JsonResponse updateCourseName(@PathVariable("courseName") String courseName, @RequestBody int courseId) {
 		courseDetailService.updateCourse(courseId, courseName);
-		return JsonResponse.setJsonResponse("", "", "", "", "True");
+		return JsonResponse.setJsonResponse("", "", "", "", true);
 	}
 
 	@PostMapping("/course/add-subj-to-course/{id}")
 	public JsonResponse addSubjectToCourseById(@PathVariable("id") int id, @RequestBody Subject subject) {
 		return JsonResponse.setJsonResponse("", "", "", courseDetailService.addSubjectToCourseById(id, subject),
-				"True");
+				true);
 
 	}
 

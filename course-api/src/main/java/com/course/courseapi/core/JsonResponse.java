@@ -13,7 +13,7 @@ public class JsonResponse implements Serializable{
 	private String errorMessage;
 	private String errorDesc;
 	private Object data;
-	private String successStatus;
+	private boolean successStatus;
 	
 	public JsonResponse(Object data) {
 		this.data = data;
@@ -23,7 +23,7 @@ public class JsonResponse implements Serializable{
 		
 	}
 
-	public JsonResponse(String errorCode, String errorMessage, String errorDesc, Object data, String successStatus) {
+	public JsonResponse(String errorCode, String errorMessage, String errorDesc, Object data, boolean successStatus) {
 		this.errorCode = errorCode;
 		this.errorMessage = errorMessage;
 		this.errorDesc = errorDesc;
@@ -63,16 +63,16 @@ public class JsonResponse implements Serializable{
 		this.data = data;
 	}
 
-	public String getSuccessStatus() {
+	public boolean getSuccessStatus() {
 		return successStatus;
 	}
 
-	public void setSuccessStatus(String successStatus) {
+	public void setSuccessStatus(boolean successStatus) {
 		this.successStatus = successStatus;
 	}
 
 	public static JsonResponse setJsonResponse(String errorCode, String errorMessage, String errorDesc, Object data,
-			String successStatus) {
+			boolean successStatus) {
 		JsonResponse jsonResponse = new JsonResponse(errorCode, errorMessage, errorDesc, data, successStatus);
 		return jsonResponse;
 

@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.course.courseapi.core.ExceptionErrors;
 import com.course.courseapi.dao.TopicDetailDAO;
 import com.course.courseapi.entity.Topics;
 import com.course.courseapi.exception.CourseException;
@@ -20,7 +21,8 @@ public class TopicDetailServiceImpl implements TopicDetailService {
 	@Override
 	public void addTopic(Topics topic) {
 		if (Objects.isNull(topic)) {
-			throw new CourseException("1001", "Null", "Null Values", "False");
+			throw new CourseException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Topics> topicNamelist = topicDetailDAO.getTopicByName(topic.getTopicName());
 		if (topicNamelist.isEmpty())
@@ -30,7 +32,8 @@ public class TopicDetailServiceImpl implements TopicDetailService {
 	@Override
 	public List<Topics> getTopicById(int id) {
 		if (Objects.isNull(id)) {
-			throw new CourseException("1001", "Null", "Null Values", "False");
+			throw new CourseException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Topics> tlist = topicDetailDAO.getTopicById(id);
 		return tlist;
@@ -39,7 +42,8 @@ public class TopicDetailServiceImpl implements TopicDetailService {
 	@Override
 	public List<Topics> getTopicByName(String name) {
 		if (Objects.isNull(name)) {
-			throw new CourseException("1001", "Null", "Null Values", "False");
+			throw new CourseException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Topics> topicNamelist = topicDetailDAO.getTopicByName(name);
 		return topicNamelist;

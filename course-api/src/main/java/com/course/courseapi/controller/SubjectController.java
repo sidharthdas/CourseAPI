@@ -20,28 +20,28 @@ public class SubjectController {
 
 	@PostMapping("/subject")
 	public JsonResponse getAllSubject() {
-		return JsonResponse.setJsonResponse("", "", "", subjectDetailService.getAllSubject(), "");
+		return JsonResponse.setJsonResponse("", "", "", subjectDetailService.getAllSubject(), true);
 	}
 
 	@PostMapping("/subject/add-Subject")
 	public JsonResponse addSubject(@RequestBody Subject subject) {
 		subjectDetailService.addSubject(subject);
-		return JsonResponse.setJsonResponse("", "", "", "", "True");
+		return JsonResponse.setJsonResponse("", "", "", "", true);
 	}
 
 	@GetMapping("/subject/get-subject-byId/{id}")
 	public JsonResponse getSubjectById(@PathVariable("id") int id) {
-		return JsonResponse.setJsonResponse("", "", "", subjectDetailService.getSubjectById(id), "");
+		return JsonResponse.setJsonResponse("", "", "", subjectDetailService.getSubjectById(id), true);
 	}
 
 	@GetMapping("/subject/get-subject-byName/{name}")
 	public JsonResponse getSubjectByName(@PathVariable("name") String name) {
-		return JsonResponse.setJsonResponse("", "", "", subjectDetailService.getSubjectByName(name), "True");
+		return JsonResponse.setJsonResponse("", "", "", subjectDetailService.getSubjectByName(name), true);
 	}
 
 	@PostMapping("/subject/add-topic-to-subject/{id}")
 	public JsonResponse addTopicToSubject(@PathVariable("id") int id, @RequestBody Topics topics) {
-		return JsonResponse.setJsonResponse("", "", "", subjectDetailService.addTopicToSubject(id, topics), "True");
+		return JsonResponse.setJsonResponse("", "", "", subjectDetailService.addTopicToSubject(id, topics), true);
 
 	}
 

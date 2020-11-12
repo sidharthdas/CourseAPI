@@ -9,12 +9,14 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.course.courseapi.core.ExceptionErrors;
 import com.course.courseapi.dao.CourseDetailDAO;
 import com.course.courseapi.dao.SubjectDetailDAO;
 import com.course.courseapi.entity.Course;
 import com.course.courseapi.entity.Subject;
 import com.course.courseapi.entity.Topics;
 import com.course.courseapi.exception.CourseException;
+import com.course.courseapi.exception.NullObjectException;
 import com.course.courseapi.service.SubjectDetailService;
 
 
@@ -41,7 +43,8 @@ public class SubjectDetailServiceImplementation implements SubjectDetailService{
 	public void addSubject(Subject s) {
 		// TODO Auto-generated method stub
 		if(Objects.isNull(s)) {
-			throw new CourseException("1001", "Null", "Null Values", "False");
+			throw new CourseException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Subject> subjectNamelist = subjectDetailDAO.getSubjectByName(s.getSubjectName());
 		if(subjectNamelist.isEmpty())
@@ -53,7 +56,8 @@ public class SubjectDetailServiceImplementation implements SubjectDetailService{
 	public List<Subject> getSubjectById(int id) {
 		// TODO Auto-generated method stub
 		if(Objects.isNull(id)) {
-			throw new CourseException("1001", "Null", "Null Values", "False");
+			throw new CourseException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Subject> subjectlist = subjectDetailDAO.getSubjectById(id);
 		return subjectlist;
@@ -63,7 +67,8 @@ public class SubjectDetailServiceImplementation implements SubjectDetailService{
 	public Subject addTopicToSubject(int subjectId, Topics topics) {
 		// TODO Auto-generated method stub
 		if(Objects.isNull(subjectId) || Objects.isNull(topics)) {
-			throw new CourseException("1001", "Null", "Null Values", "False");
+			throw new CourseException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Subject> sublist = subjectDetailDAO.getSubjectById(subjectId);
 		if(sublist.isEmpty()) {
@@ -88,7 +93,8 @@ public class SubjectDetailServiceImplementation implements SubjectDetailService{
 	@Override
 	public List<Subject> getSubjectByName(String name) {
 		if(Objects.isNull(name)) {
-			throw new CourseException("1001", "Null", "Null Values", "False");
+			throw new CourseException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
 		}
 		List<Subject> subjectNamelist = subjectDetailDAO.getSubjectByName(name);
 		return subjectNamelist;
