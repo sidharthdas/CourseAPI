@@ -19,7 +19,6 @@ public class JsonResponse implements Serializable{
 		this.data = data;
 		
 	}
-	
 	public JsonResponse() {
 		
 	}
