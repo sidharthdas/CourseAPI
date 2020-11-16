@@ -2,6 +2,7 @@ package com.course.courseapi.service;
 
 import java.util.List;
 
+import com.course.courseapi.entity.Course;
 import com.course.courseapi.entity.Subject;
 import com.course.courseapi.entity.Topics;
 
@@ -12,5 +13,6 @@ public interface SubjectDetailService {
 	public List<Subject> getSubjectById(int id);
 	public List<Subject> getSubjectByName(String name);
 	public Subject addTopicToSubject(int subjectId,Topics topics);
+	public Course removeSubjectFromCourse(int courseId, int subjId);
 
 }

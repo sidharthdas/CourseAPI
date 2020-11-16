@@ -48,9 +48,9 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 			courseDetailDAO.save(c);
 
 			return c;
-		}else {
-			throw new NullObjectException(ExceptionErrors.OBJECTALREADYPRESENTCODE, ExceptionErrors.OBJECTALREADYPRESENTMESSAGE,
-					ExceptionErrors.OBJECTALREADYPRESENTDESC, false);
+		} else {
+			throw new NullObjectException(ExceptionErrors.OBJECTALREADYPRESENTCODE,
+					ExceptionErrors.OBJECTALREADYPRESENTMESSAGE, ExceptionErrors.OBJECTALREADYPRESENTDESC, false);
 		}
 
 	}
@@ -85,7 +85,14 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 		}
 		List<Course> courses = courseDetailDAO.getCourseById(id);
 		if (Objects.nonNull(courses.get(0).getSubject())) {
+			for (Subject s : courses.get(0).getSubject()) {
+				if (s.getSubjectName().equalsIgnoreCase(subject.getSubjectName())) {
+					throw new CourseException(ExceptionErrors.SUBJECTALLREADYPRESENTINTHECOURSECODE,
+							ExceptionErrors.SUBJECTALLREADYPRESENTINTHECOURSEMESSAGE,
+							ExceptionErrors.SUBJECTALLREADYPRESENTINTHECOURSEDESC, false);
+				}
 
+			}
 			courses.get(0).getSubject().add(subject);
 
 			courseDetailDAO.save(courses.get(0));

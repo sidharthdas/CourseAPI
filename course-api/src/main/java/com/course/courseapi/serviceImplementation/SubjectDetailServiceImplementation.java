@@ -100,6 +100,31 @@ public class SubjectDetailServiceImplementation implements SubjectDetailService{
 		return subjectNamelist;
 	}
 
+	@Override
+	public Course removeSubjectFromCourse(int courseId, int subjId) {
+		// TODO Auto-generated method stub
+		List<Course> getCourse =  courseDetailDAO.getCourseById(courseId);
+		if(getCourse.size() == 0) {
+			throw new CourseException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+					ExceptionErrors.NULLOBJECTERRORDESC, false);
+		}else {
+			List<Subject> subjFromDB =  subjectDetailDAO.getSubjectById(subjId);
+			if(subjFromDB.size() == 0) {
+				throw new CourseException(ExceptionErrors.NULLOBEJCTERRORCODE, ExceptionErrors.NULLOBJECTERRORMESSAGE,
+						ExceptionErrors.NULLOBJECTERRORDESC, false);
+			}else {
+				List<Subject> subjs = getCourse.get(0).getSubject();
+				
+				if(subjs.contains(subjFromDB.get(0))) {
+					subjs.remove(subjFromDB.get(0));
+					courseDetailDAO.save(getCourse.get(0));
+				}
+			}
+		}
+		
+		return getCourse.get(0);
+	}
+
 
 	
 
