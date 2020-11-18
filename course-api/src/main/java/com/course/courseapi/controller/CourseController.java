@@ -1,6 +1,7 @@
 package com.course.courseapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,7 +57,12 @@ public class CourseController {
 	public JsonResponse addSubjectToCourseById(@PathVariable("id") int id, @RequestBody Subject subject) {
 		return JsonResponse.setJsonResponse("", "", "", courseDetailService.addSubjectToCourseById(id, subject),
 				true);
-
+	}
+	
+	@DeleteMapping("/course/delete-by-courseId")
+	JsonResponse deleteByCourseId(@RequestBody int courseId) {
+		courseDetailService.deleteCourseById(courseId);
+		return JsonResponse.setJsonResponse("", "", "", null, true);
 	}
 
 }

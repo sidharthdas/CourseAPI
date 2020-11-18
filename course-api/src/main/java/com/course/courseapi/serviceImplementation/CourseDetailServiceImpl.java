@@ -133,4 +133,18 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 	private void test1() {
 		throw new TestException("123");
 	}
+
+	@Override
+	public void deleteCourseById(int courseId) {
+		// TODO Auto-generated method stub
+		List<Course> course = courseDetailDAO.getCourseById(courseId);
+		if (course.size() == 0) {
+			throw new CourseException(ExceptionErrors.COURSENOTFOUNDCODE,
+					ExceptionErrors.COURSENOTFOUNDMESSAGE + courseId, ExceptionErrors.COURSENOTFOUNDDESC, false);
+		} else {
+			courseDetailDAO.delete(course.get(0));
+		}
+		
+
+	}
 }
