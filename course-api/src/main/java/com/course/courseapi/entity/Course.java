@@ -11,8 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import org.hibernate.envers.Audited;
+
+import com.sun.istack.NotNull;
 
 @Entity
 @Audited
@@ -20,8 +24,12 @@ public class Course {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Min(1)
+	@Max(10)
 	private int courseId;
+	@NotNull
 	private String courseName;
+	@NotNull
 	private String courseDesc;
 
 	@Version
@@ -70,7 +78,5 @@ public class Course {
 	public void setVersion(int version) {
 		this.version = version;
 	}
-	
-	
 
 }
