@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.envers.Audited;
 
@@ -20,7 +21,9 @@ public class Subject {
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	@NotNull
 	private String subjectName;
+	@NotNull
 	private String subjectDesc;
 	
 	@Version

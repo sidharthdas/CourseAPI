@@ -1,5 +1,7 @@
 package com.course.courseapi.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +20,7 @@ public class TopicController {
 	TopicDetailService topicDetailService;
 
 	@PostMapping("/topics/addTopic")
-	public JsonResponse addTopic(@RequestBody Topics topic) {
+	public JsonResponse addTopic( @Valid @RequestBody Topics topic) {
 		topicDetailService.addTopic(topic);
 		return JsonResponse.setJsonResponse("", "", "", "", true);
 	}

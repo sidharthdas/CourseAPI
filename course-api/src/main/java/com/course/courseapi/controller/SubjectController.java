@@ -1,5 +1,7 @@
 package com.course.courseapi.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,7 @@ public class SubjectController {
 	}
 
 	@PostMapping("/subject/add-Subject")
-	public JsonResponse addSubject(@RequestBody Subject subject) {
+	public JsonResponse addSubject(@Valid @RequestBody Subject subject) {
 		subjectDetailService.addSubject(subject);
 		return JsonResponse.setJsonResponse("", "", "", "", true);
 	}
