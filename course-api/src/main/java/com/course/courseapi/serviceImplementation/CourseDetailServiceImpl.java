@@ -140,11 +140,23 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 		List<Course> course = courseDetailDAO.getCourseById(courseId);
 		if (course.size() == 0) {
 			throw new CourseException(ExceptionErrors.COURSENOTFOUNDCODE,
-					ExceptionErrors.COURSENOTFOUNDMESSAGE + courseId, ExceptionErrors.COURSENOTFOUNDDESC, false);
+					ExceptionErrors.COURSENOTFOUNDMESSAGE , ExceptionErrors.COURSENOTFOUNDDESC + courseId, false);
 		} else {
 			courseDetailDAO.delete(course.get(0));
 		}
-		
 
+	}
+
+	@Override
+	public Course updateCourseDescByCourseId(int courseId, String courseDesc) {
+		// TODO Auto-generated method stub
+		List<Course> course = courseDetailDAO.getCourseById(courseId);
+		if (course.size() == 0) {
+			throw new CourseException(ExceptionErrors.COURSENOTFOUNDCODE,
+					ExceptionErrors.COURSENOTFOUNDMESSAGE , ExceptionErrors.COURSENOTFOUNDDESC + + courseId, false);
+		}
+		course.get(0).setCourseDesc(courseDesc);
+		courseDetailDAO.save(course.get(0));
+		return course.get(0);
 	}
 }

@@ -70,4 +70,9 @@ public class CourseController {
 		return JsonResponse.setJsonResponse("", "", "", "", true);
 	}
 
+	@PutMapping("course/update-courseDesc/{courseId}")
+	public JsonResponse updateCourseDesc(@PathVariable("courseId") int courseId, @RequestBody String courseDesc) {
+		return JsonResponse.setJsonResponse("", "", "",
+				courseDetailService.updateCourseDescByCourseId(courseId, courseDesc), true);
+	}
 }

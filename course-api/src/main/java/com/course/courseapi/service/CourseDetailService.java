@@ -16,4 +16,5 @@ public interface CourseDetailService {
 	public Course addSubjectToCourseById(int id, Subject subject);
 	public List<Course> getCourseByName(String name);
 	public void deleteCourseById(int courseId);
+	Course updateCourseDescByCourseId(int courseId, String courseDesc);
 }
