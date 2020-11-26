@@ -49,4 +49,16 @@ public class TopicDetailServiceImpl implements TopicDetailService {
 		return topicNamelist;
 	}
 
+	@Override
+	public Topics updateTopic(int topicId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Topics deleteTopicFormSubj(int topicId, int subjectId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

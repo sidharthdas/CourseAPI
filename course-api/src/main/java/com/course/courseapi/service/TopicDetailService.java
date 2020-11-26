@@ -9,5 +9,7 @@ public interface TopicDetailService {
 	public void addTopic(Topics topic);
 	public List<Topics> getTopicById(int id);
 	public List<Topics> getTopicByName(String name);
+	public Topics updateTopic(int topicId);
+	public Topics deleteTopicFormSubj(int topicId, int subjectId);
 
 }
