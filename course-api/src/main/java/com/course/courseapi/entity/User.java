@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.envers.Audited;
@@ -26,6 +28,8 @@ public class User {
 	@NotNull
 	private String userEmail;
 	@NotNull
+	@Max(10)
+	@Min(10)
 	private String userPhoneNumber;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "USER_ID")

@@ -6,7 +6,7 @@ import com.course.courseapi.entity.User;
 
 public interface UserService {
 
-	void addUser(User user);
+	User addUser(User user);
 	User getUserByEmail(String email);
 	List<User> getAllUser();
 	List<User> getUserWithSimilarCourse(String courseName);
