@@ -8,6 +8,7 @@ public class ExceptionErrors {
 		public static final String SUBJECTALLREADYPRESENTINTHECOURSECODE = "1003";
 		public static final String COURSENOTFOUNDCODE = "1004";
 		public static final String USERALREADYEXISTCODE = "1005";
+		public static final String USERNOTFOUNDCODE = "1006";
 		
 		
 	
@@ -17,6 +18,7 @@ public class ExceptionErrors {
 		public static final String SUBJECTALLREADYPRESENTINTHECOURSEMESSAGE = "Duplicate Subject";
 		public static final String COURSENOTFOUNDMESSAGE = "No Course Found.";
 		public static final String USERALREADYEXISTMESSAGE = "User Present.";
+		public static final String USERNOTFOUNDMESSAGE = "User not found.";
 		
 	
 		//Error Desc
@@ -24,7 +26,8 @@ public class ExceptionErrors {
 		public static final String OBJECTALREADYPRESENTDESC = "Object is present in the DB. Duplicate entry not allowed. ";
 		public static final String SUBJECTALLREADYPRESENTINTHECOURSEDESC = "Subject is already added to the course. ";
 		public static final String COURSENOTFOUNDDESC = "Course with the given Id is not available. CourseId : ";
-		public static final String USERALREADYEXISTDESC = "User is present for emailId ";
+		public static final String USERNALREADYEXISTDESC = "User is present for emailId ";
+		public static final String USERNOTFOUNDDESC = "User is not present for emailId ";
 
 
 }
