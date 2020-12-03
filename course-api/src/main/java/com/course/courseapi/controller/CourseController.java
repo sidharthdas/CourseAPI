@@ -3,6 +3,7 @@ package com.course.courseapi.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ServerProperties.Jetty.Threads;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import com.course.courseapi.entity.Course;
 import com.course.courseapi.entity.Subject;
 import com.course.courseapi.entity.TestEntity;
 import com.course.courseapi.service.CourseDetailService;
+import com.course.courseapi.serviceImplementation.TestService;
 
 @RestController
 @Validated
@@ -25,6 +27,23 @@ public class CourseController {
 
 	@Autowired
 	private CourseDetailService courseDetailService;
+	
+	@Autowired
+	public TestService testService;
+	
+	@GetMapping("/test1")
+	public JsonResponse test1() {
+		System.out.println("test");
+		try {
+			Thread.sleep(20);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		testService.m1();
+		testService.m2();
+		return JsonResponse.setJsonResponse("", "", "", null, true);
+	}
 
 	@PostMapping("/test")
 	public JsonResponse test(@Valid @RequestBody TestEntity testEntity) {
