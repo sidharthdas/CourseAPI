@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.course.courseapi.core.ExceptionErrors;
 import com.course.courseapi.dao.CourseDetailDAO;
 import com.course.courseapi.entity.Course;
 import com.course.courseapi.entity.Subject;
-import com.course.courseapi.entity.Topics;
 import com.course.courseapi.exception.CourseException;
 import com.course.courseapi.exception.NullObjectException;
 import com.course.courseapi.exception.TestException;
@@ -35,6 +35,9 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 		// TODO Auto-generated method stub
 		return courseDetailDAO.getAllCourse();
 	}
+
+	@Value("${name}")
+	private String name;
 
 	@Override
 	public Course addCourse(Course c) {
@@ -139,8 +142,8 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 		// TODO Auto-generated method stub
 		List<Course> course = courseDetailDAO.getCourseById(courseId);
 		if (course.size() == 0) {
-			throw new CourseException(ExceptionErrors.COURSENOTFOUNDCODE,
-					ExceptionErrors.COURSENOTFOUNDMESSAGE , ExceptionErrors.COURSENOTFOUNDDESC + courseId, false);
+			throw new CourseException(ExceptionErrors.COURSENOTFOUNDCODE, ExceptionErrors.COURSENOTFOUNDMESSAGE,
+					ExceptionErrors.COURSENOTFOUNDDESC + courseId, false);
 		} else {
 			courseDetailDAO.delete(course.get(0));
 		}
@@ -152,11 +155,12 @@ public class CourseDetailServiceImpl implements CourseDetailService {
 		// TODO Auto-generated method stub
 		List<Course> course = courseDetailDAO.getCourseById(courseId);
 		if (course.size() == 0) {
-			throw new CourseException(ExceptionErrors.COURSENOTFOUNDCODE,
-					ExceptionErrors.COURSENOTFOUNDMESSAGE , ExceptionErrors.COURSENOTFOUNDDESC + + courseId, false);
+			throw new CourseException(ExceptionErrors.COURSENOTFOUNDCODE, ExceptionErrors.COURSENOTFOUNDMESSAGE,
+					ExceptionErrors.COURSENOTFOUNDDESC + +courseId, false);
 		}
 		course.get(0).setCourseDesc(courseDesc);
 		courseDetailDAO.save(course.get(0));
 		return course.get(0);
 	}
+
 }

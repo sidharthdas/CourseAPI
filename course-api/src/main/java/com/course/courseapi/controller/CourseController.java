@@ -3,8 +3,6 @@ package com.course.courseapi.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ServerProperties.Jetty.Threads;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +20,7 @@ import com.course.courseapi.service.CourseDetailService;
 import com.course.courseapi.serviceImplementation.TestService;
 
 @RestController
-@Validated
+//@Validated //only use for sending error to front-end.
 public class CourseController {
 
 	@Autowired

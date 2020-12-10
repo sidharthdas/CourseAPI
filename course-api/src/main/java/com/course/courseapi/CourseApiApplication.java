@@ -15,7 +15,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com")
+@ComponentScan(basePackages = "com"	)
 @EnableSwagger2
 @EnableTransactionManagement
 public class CourseApiApplication {
