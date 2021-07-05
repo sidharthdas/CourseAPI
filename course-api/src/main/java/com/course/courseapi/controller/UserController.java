@@ -1,5 +1,7 @@
 package com.course.courseapi.controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +22,7 @@ import com.course.courseapi.service.UserService;
 public class UserController {
 
 	@Autowired
+	// @Resource()
 	private UserService userService;
 
 	@InitBinder
@@ -38,6 +41,7 @@ public class UserController {
 	}
 
 	@PostMapping("/get-user-by-email")
+	// @Cacheable(value = "user", key = "#email")
 	public JsonResponse addUser(@RequestBody String userEmail) {
 		return JsonResponse.setJsonResponse("", "", "", userService.getUserByEmail(userEmail), true);
 	}

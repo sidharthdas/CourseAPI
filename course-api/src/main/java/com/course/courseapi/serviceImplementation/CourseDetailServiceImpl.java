@@ -21,7 +21,7 @@ import com.course.courseapi.exception.TestException;
 import com.course.courseapi.service.CourseDetailService;
 
 @Service // By default Singleton
-//@Scope("prototype")
+//@Scope("request")
 public class CourseDetailServiceImpl implements CourseDetailService {
 
 	@Autowired
