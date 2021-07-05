@@ -5,7 +5,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
 @Service
-@EnableAsync
+//@EnableAsync
 public class TestService {
 
 	@Async

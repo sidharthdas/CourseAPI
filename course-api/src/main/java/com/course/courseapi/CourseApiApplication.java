@@ -6,9 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.course.courseapi.serviceImplementation.TestService;
+import com.course.courseapi.serviceImplementation.TopicDetailServiceImpl;
 
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
@@ -19,12 +21,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableCaching
 @EnableSwagger2
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com")
-//@ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.REGEX, pattern = "")})
+@ComponentScan(basePackages = "com") 
+//@ComponentScan(useDefaultFilters = false, excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "TopicController.class"))
+
 public class CourseApiApplication {
 
-	@Autowired
-	private TestService testService;
+	/*
+	 * @Autowired(required = true) private TestService testService;
+	 */
 
 	public static void main(String[] args) {
 		String S = "";
